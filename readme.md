@@ -8,12 +8,6 @@ Langchain is a framework that simplifies the development of language model-based
 
 This course will guide you through the core concepts of Langchain and help you build applications that can integrate language models effectively. Whether you're a beginner or an experienced developer, this course is designed to help you understand how to use Langchain in various real-world scenarios.
 
-## Table of Contents
-
-1. [ChatModel](#chatmodel)
-2. [Prompt Template](#prompt-template)
-3. [Chains](#chains)
-
 ## 1. ChatModel
 
 A ChatModel in LangChain is a specialized version of a language model designed to handle conversation-based inputs and outputs. Rather than dealing with simple text input and output, a ChatModel works with messages—pieces of text that are part of a dialogue, such as user inputs and model responses.
