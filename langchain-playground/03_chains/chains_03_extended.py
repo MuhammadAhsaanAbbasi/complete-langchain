@@ -15,7 +15,7 @@ model = ChatGoogleGenerativeAI(model="gemini-1.5-pro")
 prompt = ChatPromptTemplate.from_messages(
     [
         ("system", "You are a helpful automotive assistant to give me an latest about new {topic}?"),
-        ("user", "what is the latest & limited model of {car}?"),
+        ("human", "what is the latest & limited model of {car}?"),
     ]
 )
 
