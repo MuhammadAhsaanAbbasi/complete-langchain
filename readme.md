@@ -1,6 +1,6 @@
 # Langchain Course Repository
 
-Welcome to the **Langchain Course** repository! This repository contains code samples, exercises, and resources designed to help you get started with Langchain, a powerful Python library for building applications that interact with language models like GPT-3, GPT-4, and others.
+Welcome to the **Langchain Course** repository! This repository contains code samples, exercises, and resources designed to help you get started with Langchain, a powerful Python library for building applications that interact with language models like GPT-4, GPT-4o, llama-3.1 & others.
 
 ## Overview
 
