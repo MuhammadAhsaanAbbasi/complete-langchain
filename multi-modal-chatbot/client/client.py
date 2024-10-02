@@ -7,7 +7,7 @@ def get_response(prompt:str):
 
 
 # Streamlit Framework
-st.title("Multi-Modal Chatbot")
+st.title("Multi-Modal Chatbot Automobiles FAQ & Content Generation")
 
 prompt = st.text_input("Enter prompt")
 
