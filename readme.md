@@ -102,6 +102,8 @@ The RAG process involves retrieving relevant data from these sources, and the LL
 
 ### Detailed Overview:
 
+  ![Detail Overview](https://myapplication-logos.s3.ap-south-1.amazonaws.com/Detailed+Overview+RAG.jpg)
+
 #### Initial Input (PDF with 10M Tokens):
 
 - You start with a large source of information, such as a PDF containing millions of tokens. Tokens are essentially the building blocks of text (like words or pieces of words).
