@@ -1849,6 +1849,23 @@ langchain-core = ">=0.3.1,<0.4.0"
 pydantic = ">=2.7.4,<3.0.0"
 
 [[package]]
+name = "langchain-chroma"
+version = "0.1.4"
+description = "An integration package connecting Chroma and LangChain"
+optional = false
+python-versions = "<4,>=3.8.1"
+files = [
+    {file = "langchain_chroma-0.1.4-py3-none-any.whl", hash = "sha256:2877b284fc736bfd31628aa542ed0f5410c3cdc63ad2c670cb67fc360b4a236a"},
+    {file = "langchain_chroma-0.1.4.tar.gz", hash = "sha256:5963a79bf72af0f72019084bbc1e610d03ba33ec2df9a4b47b27c0132aa533fb"},
+]
+
+[package.dependencies]
+chromadb = ">=0.4.0,<0.5.4 || >0.5.4,<0.5.5 || >0.5.5,<0.6.0"
+fastapi = ">=0.95.2,<1"
+langchain-core = {version = ">=0.1.40,<0.4", markers = "python_version >= \"3.9\""}
+numpy = {version = ">=1.26.0,<2.0.0", markers = "python_version >= \"3.12\""}
+
+[[package]]
 name = "langchain-community"
 version = "0.3.0"
 description = "Community contributed LangChain integrations."
@@ -5125,4 +5142,4 @@ type = ["pytest-mypy"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.12"
-content-hash = "b7b8773a55452ed8de4fd09104a6ddface6f75a44ad5ac6244dad9d2c63bd071"
+content-hash = "d8d70be35006fe8cd502e810cda81b2cec89e09ed2b3f0a0fc756395f25b8a80"

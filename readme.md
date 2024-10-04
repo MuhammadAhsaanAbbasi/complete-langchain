@@ -75,13 +75,16 @@ Chains make it easy to combine different tasks and create more complex systems b
 ### Chains Possibilities
 
 - **Chain Extended**: This is when you connect multiple steps or language models in a sequence, with each step passing its output as input to the next step. It’s like a pipeline where each task builds on the result of the previous one, allowing you to perform a series of actions in a structured order.
-  ![Chain Extended](https://myapplication-logos.s3.ap-south-1.amazonaws.com/extended.jpg)
+
+![Chain Extended](https://myapplication-logos.s3.ap-south-1.amazonaws.com/extended.jpg)
 
 - **Parallel Chain**: In a parallel chain, multiple steps run at the same time, each working independently on different tasks or inputs. After all the steps finish, their results are combined or used together. This is useful when you need to process several pieces of information simultaneously.
-  ![Parallel Chain](https://myapplication-logos.s3.ap-south-1.amazonaws.com/parallel.jpg)
+
+![Parallel Chain](https://myapplication-logos.s3.ap-south-1.amazonaws.com/parallel.jpg)
 
 - **Chain Branching**: Chain branching involves splitting the workflow into different paths based on certain conditions or criteria. Depending on the input or result, the process can take different directions, allowing for more flexible and dynamic workflows.
-  ![Chain Branching](https://myapplication-logos.s3.ap-south-1.amazonaws.com/branching.jpg)
+
+![Chain Branching](https://myapplication-logos.s3.ap-south-1.amazonaws.com/branching.jpg)
 
 ## 4. Retrieval-Augmented Generation (RAG)
 
