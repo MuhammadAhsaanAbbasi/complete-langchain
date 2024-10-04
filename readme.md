@@ -96,7 +96,7 @@ In the context of LangChain and RAG, think of the LLM Knowledge as the central p
 - **Code**: Programmatic knowledge or examples retrieved from code bases.
 - **Video Transcript**: Information extracted from video transcripts to include context from audiovisual content.
 
-  ![High-Level Overview](https://myapplication-logos.s3.ap-south-1.amazonaws.com/HighLevel+Overveiw+RAG.jpg)
+![High-Level Overview](https://myapplication-logos.s3.ap-south-1.amazonaws.com/HighLevel+Overveiw+RAG.jpg)
 
 The RAG process involves retrieving relevant data from these sources, and the LLM then uses this data to generate a response. The retrieved information supplements the LLM's knowledge, resulting in more accurate and context-aware outputs.
 
@@ -140,7 +140,7 @@ The RAG process involves retrieving relevant data from these sources, and the LL
 
 - Final Output: The output includes all relevant chunks that can help the model generate an informed answer, as well as the specific response to the user’s question.
 
-  ![Detail Overview](https://myapplication-logos.s3.ap-south-1.amazonaws.com/Detailed+Overview+RAG.jpg)
+![Detail Overview](https://myapplication-logos.s3.ap-south-1.amazonaws.com/Detailed+Overview+RAG.jpg)
 
 ### Process Flow Overview:
 - A large document (like a PDF) is split into smaller, manageable pieces (chunks).
