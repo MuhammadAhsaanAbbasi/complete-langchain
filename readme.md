@@ -15,7 +15,8 @@ A ChatModel in LangChain is a specialized version of a language model designed t
 ### Key Features of ChatModel
 
 - **Message Format**: ChatModels accept a structured format for inputs, typically with three types of messages:
-  - **SystemMessage**: A *SystemMessage* sets the context or behavior for the conversation. It’s like giving instructions to the AI on how to act, such as "You are a professional Python developer helping to write code." It defines the role or tone for the chat but doesn't directly interact with the conversation itself.
+
+  - **SystemMessage**: A _SystemMessage_ sets the context or behavior for the conversation. It’s like giving instructions to the AI on how to act, such as "You are a professional Python developer helping to write code." It defines the role or tone for the chat but doesn't directly interact with the conversation itself.
   - **HumanMessage**: Represents the user's input in a conversation (e.g., questions or prompts).
   - **AIMessage**: Response from the model to the user's input. It’s what the AI sends back based on the conversation or prompt provided.
 
@@ -47,17 +48,17 @@ A Prompt Template in LangChain defines reusable, structured prompts for language
 
 - **Customizable Input Variables**: Can take multiple input variables for tailoring prompts.
 
-    ```python
-    from langchain.prompts import PromptTemplate
+  ```python
+  from langchain.prompts import PromptTemplate
 
-    template = "Translate the following text to {language}: {text}"
-    prompt_template = PromptTemplate(
-    input_variables=["language", "text"],
-    template=template
-    )
-    prompt = prompt_template.format(language="French", text="Hello, how are you?")
-    # Output: "Translate the following text to French: Hello, how are you?"
-    ```
+  template = "Translate the following text to {language}: {text}"
+  prompt_template = PromptTemplate(
+  input_variables=["language", "text"],
+  template=template
+  )
+  prompt = prompt_template.format(language="French", text="Hello, how are you?")
+  # Output: "Translate the following text to French: Hello, how are you?"
+  ```
 
 - **Multiple Use Cases**: Used for various applications such as content generation, translation, customer support, and more.
 
@@ -72,14 +73,61 @@ Think of it like an assembly line: one machine does its job and then passes the 
 Chains make it easy to combine different tasks and create more complex systems by connecting multiple steps in a sequence!
 
 ### Chains Possibilities
+
 - **Chain Extended**: This is when you connect multiple steps or language models in a sequence, with each step passing its output as input to the next step. It’s like a pipeline where each task builds on the result of the previous one, allowing you to perform a series of actions in a structured order.
-   ![Chain Extended](https://myapplication-logos.s3.ap-south-1.amazonaws.com/extended.jpg)
+  ![Chain Extended](https://myapplication-logos.s3.ap-south-1.amazonaws.com/extended.jpg)
 
 - **Parallel Chain**: In a parallel chain, multiple steps run at the same time, each working independently on different tasks or inputs. After all the steps finish, their results are combined or used together. This is useful when you need to process several pieces of information simultaneously.
-    ![Parallel Chain](https://myapplication-logos.s3.ap-south-1.amazonaws.com/parallel.jpg)
+  ![Parallel Chain](https://myapplication-logos.s3.ap-south-1.amazonaws.com/parallel.jpg)
 
 - **Chain Branching**: Chain branching involves splitting the workflow into different paths based on certain conditions or criteria. Depending on the input or result, the process can take different directions, allowing for more flexible and dynamic workflows.
-    ![Chain Branching](https://myapplication-logos.s3.ap-south-1.amazonaws.com/branching.jpg)
+  ![Chain Branching](https://myapplication-logos.s3.ap-south-1.amazonaws.com/branching.jpg)
+
+## 4. Retrieval-Augmented Generation (RAG)
+
+In LangChain, **RAG** is a framework that enhances the generation of responses from a language model by augmenting it with external, up-to-date, and relevant information retrieved from specific data sources (like the web, documents, or databases).
+
+### High-Level Overview:
+
+In the context of LangChain and RAG, think of the LLM Knowledge as the central piece, but it is being fed with various retrieval sources:
+
+- **Web**: External data fetched from the internet.
+- **PDF**: Information extracted from documents.
+- **Code**: Programmatic knowledge or examples retrieved from code bases.
+- **Video Transcript**: Information extracted from video transcripts to include context from audiovisual content.
+
+  ![High-Level Overview](https://myapplication-logos.s3.ap-south-1.amazonaws.com/HighLevel+Overveiw+RAG.jpg)
+
+The RAG process involves retrieving relevant data from these sources, and the LLM then uses this data to generate a response. The retrieved information supplements the LLM's knowledge, resulting in more accurate and context-aware outputs.
+
+### Detailed Overview:
+
+#### Initial Input (PDF with 10M Tokens):
+
+- You start with a large source of information, such as a PDF containing millions of tokens. Tokens are essentially the building blocks of text (like words or pieces of words).
+
+#### Chunking:
+
+- Since handling the entire document at once can be computationally expensive, the text is chunked into smaller pieces, typically of 1K tokens each.
+
+- Each chunk represents a small segment of the original text, making it more manageable for processing and retrieval.
+
+#### Text Embeddings (Vectorization):
+
+- Embeddings are the core of this process. They are numerical representations of text, meaning the chunks of text are converted into vectors (arrays of numbers).
+
+- For example, as shown in the diagram, simple embeddings for "Dog" could be [1,1,2,4,1], and similarly for "Cat" and "House."
+
+- These embeddings help the machine understand and compare the chunks of text by converting the semantic meaning into a format it can mathematically process.
+
+- LLM Embedder: The task of converting text into embeddings is done by a Language Model Embedder. This process may have a cost, because generating embeddings for large texts requires significant computational resources.
+
+#### Vector Store:
+
+- Once the text is embedded (converted to numerical form), the embeddings are stored in a Vector Store.
+  A Vector Store is a specialized database designed to handle and store high-dimensional vectors (i.e., embeddings).
+
+- It allows for efficient retrieval of relevant chunks based on similarity searches, meaning it can quickly find the chunks most closely related to a specific query.
 
 <hr />
 
