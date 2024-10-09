@@ -34,7 +34,7 @@ if not os.path.exists(persistent_directory):
             document.append(doc)
 
     # Split the documents into Chunks
-    text_splitter = CharacterTextSplitter(chunk_size=3000, chunk_overlap=0)
+    text_splitter = CharacterTextSplitter(chunk_size=3000, chunk_overlap=200)
     docs = text_splitter.split_documents(document)
 
     # Display Information about the Split Documents.

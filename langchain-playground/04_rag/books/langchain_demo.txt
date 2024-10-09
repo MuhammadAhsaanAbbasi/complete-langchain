@@ -25,7 +25,7 @@ To learn more about LangChain and its wide range of applications, be sure to che
 
 LangChain Documentation: https://python.langchain.com/
 Don't Forget to Like and Subscribe!
-If you're looking for in-depth tutorials and insights into LangChain, CrewAI, and other AI technologies, be sure to check out the fantastic YouTube channel by Brandon Hancock:
+If you're looking for in-depth tutorials and insights into LangChain, CrewAI, and other AI technologies, be sure to check out the fantastic YouTube channel by M.Ahsaan Abbasi:
 
-YouTube Channel: https://www.youtube.com/@bhancock_ai
+YouTube Channel: https://www.youtube.com/@humanity2666
 Don't forget to like and subscribe to his channel!!
