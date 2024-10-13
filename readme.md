@@ -163,4 +163,33 @@ The RAG process involves retrieving relevant data from these sources, and the LL
 
 <hr />
 
+## 5. Agents & Tools
+
+**Agents** & **Tools** are two key concepts in LangChain that allow language models to perform actions, interact with external systems, and generate results dynamically.
+
+![Agents & Tools](https://myapplication-logos.s3.ap-south-1.amazonaws.com/Agents+tool.jpg)
+
+### Agents
+In LangChain, an Agent is essentially a language model (LLM) that has been provided with a specific prompt to define its behavior. The behavior of an agent is comparable to a state machine, where different actions are performed depending on the agent's state. Each state has its own action, and the agent moves from one state to the next, looping through tasks as defined by the prompt.
+
+#### Agent Process:
+- **Action:** The agent takes an action (like answering a question, performing a task, etc.).
+- **Observation:** After taking an action, the agent observes the result or feedback from the action.
+- **Thought:** Based on its observations, the agent thinks or processes the information.
+- **Result:** Finally, the agent produces a result or output based on its thought process.
+
+This cycle repeats, allowing the agent to handle tasks dynamically. Each time, the agent's actions are guided by the prompts you design, which tell it how to behave in different states.
+
+### Tools
+Tools in LangChain are interfaces that an agent, chain, or LLM can use to interact with the external world. These tools enable agents to perform actions beyond simple text generation, such as searching the web, executing code, or querying a database.
+
+#### Common Tools:
+- **Search Internet:** The agent uses this tool to retrieve information from the web, accessing real-time data to supplement its responses.
+- **Execute Code:** With this tool, the agent can run scripts or code to perform computations or other programmatic tasks.
+- **Query Database:** This tool allows the agent to access and retrieve information from databases, providing more structured data or facts in its outputs.
+By using these tools, the agent can perform more complex tasks and retrieve relevant data from external sources, enhancing its functionality and making it more versatile.
+
+### Conclusion
+In summary, *agents* in LangChain are state-driven language models that move through a sequence of actions, observations, and thoughts to produce a result. *Tools* enhance the agent's capabilities by providing interfaces to interact with the external world, enabling it to search for information, run code, or query databases. Together, agents and tools allow you to create highly dynamic, flexible, and intelligent systems capable of complex tasks.
+
 <h2 align="center">Dear Brother and Sister Show some ❤ by <img src="https://imgur.com/o7ncZFp.jpg" height=25px width=25px> this repository!</h2>
