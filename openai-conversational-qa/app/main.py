@@ -3,9 +3,12 @@ from fastapi.middleware.cors import CORSMiddleware
 from starlette.middleware.sessions import SessionMiddleware
 from contextlib import asynccontextmanager
 from .chatbot import qa_chatbot
+from .db import create_db_and_tables, DB_SESSION
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
+    print("Creating tables..")
+    create_db_and_tables()
     yield
 
 app = FastAPI(
@@ -30,7 +33,6 @@ def read_root():
     return {"Message": "LangChain OpenAI function Calling Conversational QA"}
 
 @app.get("/chatbot")
-async def openai_chatbot(query: str):
-    response = await qa_chatbot(query=query)
-
+async def openai_chatbot(query: str, session: DB_SESSION, chat_id: int | None = None):
+    response = await qa_chatbot(query=query, chat_id=chat_id, session=session)
     return response
