@@ -1,6 +1,6 @@
-# OpenAI Function Calling with LangChain
+# Functions, Tools, & Agents with LangChain
 
-I have created a **LangChain OpenAI function Calling Conversational QA Memory Chatbot** using Multiple Data Resources with LangChain using multiple LLM & Multiple Data Resources i.e:  *OpenAI*, *Mistralai*, *Wikipedia*, *Arxiv* within the using of Advanced Concepts of *RAG*, *Agents & tools*.
+I have learned & Completed a short course of LangChain about **Functions, Tools, & Agents with LangChain**! where I Learn about the Latest Advancement in ***LLM*** APIs & use ***OpenAI Function Calling*** & ***LangChain Expression Language (LCEL)*** to compose & *customize chains & Agents*.
 
 [![Watch the video](https://myapplication-logos.s3.ap-south-1.amazonaws.com/Screenshot+(253).png)](https://learn.deeplearning.ai/accomplishments/e4753c22-d30e-40de-9903-2eb40d880271?usp=sharing)
 <hr />
