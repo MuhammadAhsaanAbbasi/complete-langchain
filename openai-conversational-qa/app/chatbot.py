@@ -3,7 +3,7 @@ from langchain_community.chat_message_histories import ChatMessageHistory
 from langchain.agents.format_scratchpad import format_to_openai_functions
 from langchain.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langchain.tools.render import format_tool_to_openai_function
-from langchain_core.messages import HumanMessage, AIMessage
+from langchain_core.messages import HumanMessage, AIMessage, BaseMessage
 from langchain.schema.runnable import RunnablePassthrough
 from langchain.memory import ConversationBufferMemory
 from langchain.agents import AgentExecutor
@@ -12,7 +12,7 @@ from pydantic import BaseModel, Field
 from langchain.tools import tool
 import wikipedia # type: ignore
 from dotenv import load_dotenv
-from sqlmodel import select, JSON
+from sqlmodel import select, Session
 from typing import List
 from typing import Dict, Union
 from fastapi import HTTPException, status
@@ -93,41 +93,39 @@ async def qa_chatbot(query: str, chat_id: int | None, session: DB_SESSION):
             raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Chat not found")
         
         chat = db_chat.chat_history
-        print(chat)
-        print(type(chat))
-        import ast
-        chat_history = ast.literal_eval(chat)
-        print(chat_history)
-        print(type(chat_history))
-        # try: 
-        #         # Deserialize the chat history by converting it into a list of messages
-        #         chat_history_data = json.loads(chat)
-        #         print(chat_history_data)
-        #         chat_history = [HumanMessage(content=msg["content"]) if msg["type"] == "human" else AIMessage(content=msg["content"]) for msg in chat_history_data]
-        # except json.JSONDecodeError:
-        #         raise HTTPException(status_code=400, detail="Invalid JSON data provided for chat history")
+        # Converting JSON string to list of dictionaries
+        try:
+            chat_history_data = json.loads(chat)
+        except json.JSONDecodeError:
+            raise HTTPException(status_code=400, detail="Invalid JSON data provided for chat history")
+
+        # Converting list of dictionaries to list of message objects
+        chat_history = [
+            HumanMessage(**msg) if msg["type"] == "human" else AIMessage(**msg)
+            for msg in chat_history_data
+        ]
         
-        # chat_memory = ChatMessageHistory(messages=chat_history)
-        # memory = ConversationBufferMemory(memory_key="chat_history", return_messages=True, chat_memory=chat_memory)
-    # else:
-    #     memory = ConversationBufferMemory(memory_key="chat_history", return_messages=True)
-    #     db_chat = None
+        chat_memory = ChatMessageHistory(messages=chat_history)
+        memory = ConversationBufferMemory(memory_key="chat_history", return_messages=True, chat_memory=chat_memory)
+    else:
+        memory = ConversationBufferMemory(memory_key="chat_history", return_messages=True)
+        db_chat = None
 
-    # agent_executer = AgentExecutor(agent=agent_chain, tools=tools, memory=memory, verbose=True)
+    agent_executer = AgentExecutor(agent=agent_chain, tools=tools, memory=memory, verbose=True)
 
-    # response = await agent_executer.ainvoke({"input": query})
+    response = await agent_executer.ainvoke({"input": query})
 
-    # # Serialize the updated chat history
-    # new_chat_history = json.dumps([msg.dict() for msg in memory.chat_memory.messages])
+    # Serialize the updated chat history
+    new_chat_history = json.dumps([msg.model_dump() for msg in memory.chat_memory.messages])
 
-    # if not db_chat:
-    #     db_chat = Chat(chat_history=new_chat_history)
-    #     session.add(db_chat) 
-    # else:
-    #     db_chat.chat_history = new_chat_history
+    if not db_chat:
+        db_chat = Chat(chat_history=new_chat_history)
+        session.add(db_chat) 
+    else:
+        db_chat.chat_history = new_chat_history
 
-    # session.commit()
-    # session.refresh(db_chat)
+    session.commit()
+    session.refresh(db_chat)
 
-    return {"output": 'response["output"], "chat_history": db_chat.chat_history'}
+    return {"output": response["output"], "chat_history": db_chat.chat_history}
 
