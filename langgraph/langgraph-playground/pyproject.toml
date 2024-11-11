@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "langGraph_Playground"
+version = "0.1.0"
+description = ""
+authors = ["MuhammadAhsaanAbbasi <mahsaanabbasi@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+langchain = "^0.3.7"
+langgraph = "^0.2.45"
+langgraph-checkpoint-sqlite = "^2.0.1"
+
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
