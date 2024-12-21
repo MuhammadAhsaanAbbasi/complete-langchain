@@ -8,6 +8,8 @@ readme = "README.md"
 [tool.poetry.dependencies]
 python = "^3.12"
 langchain-mistralai = "^0.2.3"
+panel = "^1.5.5"
+jupyter-bokeh = "^4.0.5"
 
 
 [build-system]
